@@ -42,8 +42,8 @@ After installing, please configure your own parameters in the file:
 `python3 -m allskycam` 
 
 it will generate:
-1) skycam_yyyyMMdd_hhmmssssssss.jpg in the output folder (you may use it to build timelapse and startrails)
-
+1) skycam_yyyyMMdd_hhmmssssssss.jpg in the output folder (you may use it to build timelapse and startrails)  
+  
 2) .jpg file in your local webfolder (if needed. file name to be defined in config.txt)
 
 3) .jpg file in your remote FTP Server (if needed. file name to be defined in config.txt)
@@ -62,7 +62,9 @@ and add the following lines:
 `* 9-15 * * * sudo killall raspistill; python3 -m allskycam >/dev/null 2>&1`
 
 the 1st line deletes images older than 2 days from your output folder
+
 the 2nd line collect an all-sky image every 3 minutes from 4pm to 9am
+
 the 3rd line collect an all-sky image every 1 minute from 9am to 4pm
 
 files:
