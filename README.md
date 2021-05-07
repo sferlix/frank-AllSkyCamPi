@@ -13,11 +13,12 @@ Optionally, you can also get (if, so contact me !):
 - script to control relays for dew heater and cooling fan
 - script to read temperature and humidity 
 
-##INSTALLATION##
+## INSTALLATION
 
 pre-requisites:
 
 you will need to install pip:
+
 `sudo apt install python3-pip`
 
 and the pytz library (https://pypi.org/project/pytz/)
@@ -32,7 +33,7 @@ After installing, please configure your own parameters in the file:
 
 `/home/pi/.local/lib/python3.7/site-packages/allskycam/config.txt`
 
-##USE##
+## USE
 
 `python3 -m allskycam` 
 
@@ -47,10 +48,12 @@ To do so, open the crontab:
 `crontab -e`
 
 and add the following lines:
-`
-0 1 * * * find <your_images_folder> -mtime +2 -type f -delete >/dev/null 2>&1
-*/3 0-8,16-23 * * * sudo killall raspistill; python3 -m allskycam >/dev/null 2>&1
-* 9-15 * * * sudo killall raspistill; python3 -m allskycam >/dev/null 2>&1`
+
+`0 1 * * * find <your_images_folder> -mtime +2 -type f -delete >/dev/null 2>&1`
+
+`*/3 0-8,16-23 * * * sudo killall raspistill; python3 -m allskycam >/dev/null 2>&1`
+
+`* 9-15 * * * sudo killall raspistill; python3 -m allskycam >/dev/null 2>&1`
 
 the 1st line deletes images older than 2 days from your output folder
 the 2nd line collect an all-sky image every 3 minutes from 4pm to 9am
