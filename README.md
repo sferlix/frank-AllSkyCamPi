@@ -1,8 +1,12 @@
 # frank-AllSkyCamPi
-A lite AllSkyCam for Raspberry Pi
+An AllSkyCam software for Raspberry Pi and Pi HQ Camera, Pi Camera 2 and NoIr
 by Francesco Sferlazza - sferlazza@gmail.com
 
-This software is intended to collect all-sky images with Raspberry Pi, Pi HQ Camera and every camera that is compatible with it.
+This software is intended to collect all-sky images with Raspberry Pi
+It allows you to get real-time image of the sky, to generate timelapse and startrail images.
+
+Automatic exposure based on sun rise/sun set, moon presence and illumination.
+This is a very lite software.
 
 Hardware / OS requirements: 
 I've tested it on Raspberry Pi4, 4GB RAM, Pi HQ Camera with fisheye, SD Card 64GB
