@@ -42,7 +42,7 @@ After installing, please configure your own parameters in the file:
 `python3 -m allskycam` 
 
 it will generate:
-1) skycam_<timestamp>.jpg in the output folder (you may use it to build timelapse and startrails)
+1) skycam_yyyyMMdd_hhmmssssssss.jpg in the output folder (you may use it to build timelapse and startrails)
 
 2) .jpg file in your local webfolder (if needed. file name to be defined in config.txt)
 
