@@ -13,22 +13,22 @@ Optionally, you can also get (if, so contact me !):
 - script to control relays for dew heater and cooling fan
 - script to read temperature and humidity 
 
-___INSTALLATION
+**INSTALLATION**
 
 pre-requisites:
 
-__`sudo apt install python3-pip`
-__`pip3 install pytz` 
+`sudo apt install python3-pip`
+`pip3 install pytz` 
 
 Then, install with:
 
-__`pip3 install frank-AllSkyCamPi`
+`pip3 install frank-AllSkyCamPi`
 
 After installing, please configure your own parameters in the file:
 
 `/home/pi/.local/lib/python3.7/site-packages/allskycam/config.txt`
 
-___USE
+**USE**
 
 `python3 -m allskycam` 
 
