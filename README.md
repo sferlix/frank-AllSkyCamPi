@@ -39,7 +39,9 @@ After installing, please configure your own parameters in the file:
 
 it will generate:
 1) skycam_<timestamp>.jpg in the output folder (you may use it to build timelapse and startrails)
+
 2) .jpg file in your local webfolder (if needed. file name to be defined in config.txt)
+
 3) .jpg file in your remote FTP Server (if needed. file name to be defined in config.txt)
 
 please note that the command line need to be added as cron job. 
