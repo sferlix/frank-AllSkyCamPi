@@ -54,6 +54,13 @@ After installing, please configure your own parameters in the file:
 
 ## USE
 
+Before running the allskycam, ensure that:
+
+- you have configured your parameters in config.txt
+- output folder exist (e.g. images)
+
+then, you can launch:
+
 `python3 -m allskycam` 
 
 it will generate:
@@ -63,7 +70,7 @@ it will generate:
 
 3) .jpg file in your remote FTP Server (if needed. file name to be defined in config.txt)
 
-please note that the command line need to be added as cron job. 
+To make everything automatic, please you need to add some lines in crontab. 
 To do so, open the crontab:
 
 `crontab -e`
@@ -87,12 +94,13 @@ the 4th line automatically generates a 24h timelapse from 9am to 9am every day a
 
 files:
 
-1) `__main__.py     `=> main program
-2) `imageHeader.py  `=> module for calculating moon/sun rise/set and moon phase 
-3) `fileManager.py  `=> module for managing file uploads to ftp, copy, and so on
-4) `suncalc2.py     `=> The moon/sun calculation based on SuncalcPy library (https://github.com/Broham/suncalcPy) 
-5) `timelapse.py    `=> module for generating timelapse
-6) `config.txt      `=> configuration file (e.g. lat, log, timezone,..)
+1) `__main__.py       `=> main program
+2) `imageHeader.py    `=> module for calculating moon/sun rise/set and moon phase 
+3) `fileManager.py    `=> module for managing file uploads to ftp, copy, and so on
+4) `suncalc2.py       `=> The moon/sun calculation based on SuncalcPy library (https://github.com/Broham/suncalcPy) 
+5) `timelapse.py      `=> module for generating timelapse
+6) `allskycamdelete.py`=> module for cleaning up old files and folders
+7) `config.txt        `=> configuration file (e.g. lat, log, timezone,..)
 
 
 
