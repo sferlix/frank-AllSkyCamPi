@@ -82,9 +82,9 @@ and add the following lines:
 
 `* 9-15 * * * python3 -m allskycam >/dev/null 2>&1`
 
-`0 1 * * *    python3 -m allskycamdelete >/dev/null 2>&1`
+`0 1 * * *    python3 -m allskycam.allskycamdelete >/dev/null 2>&1`
 
-`1 9 * * *    python3 -m timelapse >/dev/null 2>&1`
+`1 9 * * *    python3 -m allskycam.timelapse >/dev/null 2>&1`
 
 
 the 1st line collect an all-sky image every 3 minutes from 4pm to 9am
