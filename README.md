@@ -29,10 +29,25 @@ and the pytz library (https://pypi.org/project/pytz/)
 
 `pip3 install pytz` 
 
+if you want automatically generate timelapses, then you need to install ffmpeg:
+
+`sudo apt install ffmpeg`
+
+
 Then, install with:
 
 `pip3 install frank-AllSkyCamPi`
 
+in case of update, use:
+
+`pip3 install frank-AllSkyCamPi==<x.y.z>`
+
+where x.y.z is the last version number
+E.g. if last version is 1.12.0, then you need to type:
+
+`pip3 install frank-AllSkyCamPi==1.12.0`
+
+ 
 After installing, please configure your own parameters in the file:
 
 `/home/pi/.local/lib/python3.7/site-packages/allskycam/config.txt`
@@ -55,24 +70,29 @@ To do so, open the crontab:
 
 and add the following lines:
 
-`0 1 * * * find <your_images_folder> -mtime +2 -type f -delete >/dev/null 2>&1`
 
-`*/3 0-8,16-23 * * * sudo killall raspistill; python3 -m allskycam >/dev/null 2>&1`
+`*/3 0-8,16-23 * * * python3 -m allskycam >/dev/null 2>&1`
 
-`* 9-15 * * * sudo killall raspistill; python3 -m allskycam >/dev/null 2>&1`
+`* 9-15 * * * python3 -m allskycam >/dev/null 2>&1`
 
-the 1st line deletes images older than 2 days from your output folder
+`0 1 * * *    python3 -m allskycamdelete >/dev/null 2>&1`
 
-the 2nd line collect an all-sky image every 3 minutes from 4pm to 9am
+`1 9 * * *    python3 -m timelapse >/dev/null 2>&1`
 
-the 3rd line collect an all-sky image every 1 minute from 9am to 4pm
+
+the 1st line collect an all-sky image every 3 minutes from 4pm to 9am
+the 2nd line collect an all-sky image every 1 minute from 9am to 4pm
+the 3rd line deletes images older than XX days from your output folders (XX can be defined in config file. Default = 3 )
+the 4th line automatically generates a 24h timelapse from 9am to 9am every day at 9:01
 
 files:
 
 1) `__main__.py     `=> main program
 2) `imageHeader.py  `=> module for calculating moon/sun rise/set and moon phase 
-3) `upload.py       `=> module for uploading images on a FTP server
+3) `fileManager.py  `=> module for managing file uploads to ftp, copy, and so on
 4) `suncalc2.py     `=> The moon/sun calculation based on SuncalcPy library (https://github.com/Broham/suncalcPy) 
-5) `config.txt      `=> configuration file (e.g. lat, log, timezone,..)
+5) `timelapse.py    `=> module for generating timelapse
+6) `config.txt      `=> configuration file (e.g. lat, log, timezone,..)
+
 
 
