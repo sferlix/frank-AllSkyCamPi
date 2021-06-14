@@ -43,9 +43,9 @@ in case of update, use:
 `pip3 install frank-AllSkyCamPi==<x.y.z>`
 
 where x.y.z is the last version number
-E.g. if last version is 1.12.0, then you need to type:
+E.g. if last version is 1.26.0, then you need to type:
 
-`pip3 install frank-AllSkyCamPi==1.12.0`
+`pip3 install frank-AllSkyCamPi==1.26.0`
 
  
 After installing, please configure your own parameters in the file:
@@ -75,23 +75,31 @@ To do so, open the crontab:
 
 `crontab -e`
 
-and add the following lines:
+and add the 5 lines below:
 
 
-`*/3 0-8,16-23 * * * python3 -m allskycam >/dev/null 2>&1`
+ 
+from 23:59 to 8:59 run every 3 minutes, the second time sleep 90 secs, so that
+overall will be from 16:00 to 8:59 run every 90 seconds
 
-`* 9-15 * * * python3 -m allskycam >/dev/null 2>&1`
+`*/3 0-8,16-23 * * * sleep 90;python3 -m allskycam >/home/pi/allSkyCam/logs/allskylog.txt 2>&1`
 
-`0 1 * * *    python3 -m allskycam.allskycamdelete >/dev/null 2>&1`
+from 9:00 to 15:59 run every minute
 
-`1 9 * * *    python3 -m allskycam.timelapse >/dev/null 2>&1`
+`* 9-15 * * * python3 -m allskycam >/home/pi/allSkyCam/logs/allskylog.txt 2>&1`
 
+check for updated image. If obsolete, then wait 4 min and then reboot
 
-the 1st line collect an all-sky image every 3 minutes from 4pm to 9am
-the 2nd line collect an all-sky image every 1 minute from 9am to 4pm
-the 3rd line deletes images older than XX days from your output folders (XX can be defined in config file. Default = 3 )
-the 4th line automatically generates a 24h timelapse from 9am to 9am every day at 9:01
+`*/5 * * * * sleep 240;python3 -m allskycam.watchDog >/dev/null 2>&1`
 
+delete old files according to configured retention_days param in config.txt
+
+`0 1 * * * python3 -m allskycam.allskycamdelete >/dev/null 2>&1`
+
+every morning at 9 generate timelapse
+
+`0 9 * * * python3 -m allskycam.timelapse >/dev/null 2>&1`
+ 
 files:
 
 1) `__main__.py       `=> main program
@@ -100,7 +108,8 @@ files:
 4) `suncalc2.py       `=> The moon/sun calculation based on SuncalcPy library (https://github.com/Broham/suncalcPy) 
 5) `timelapse.py      `=> module for generating timelapse
 6) `allskycamdelete.py`=> module for cleaning up old files and folders
-7) `config.txt        `=> configuration file (e.g. lat, log, timezone,..)
+7) `watchDog.py       `=> check if everything is running, otherwise reboot
+8) `config.txt        `=> configuration file (e.g. lat, log, timezone,..)
 
 
 
