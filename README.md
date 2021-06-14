@@ -3,7 +3,7 @@ An AllSkyCam software for Raspberry Pi and Pi HQ Camera, Pi Camera 2 and NoIr
 by Francesco Sferlazza - sferlazza@gmail.com
 
 This software is intended to collect all-sky images with Raspberry Pi
-It allows you to get real-time image of the sky, to generate timelapse and startrail images.
+It allows you to get real-time image of the sky and to generate timelapse.
 
 Automatic exposure based on sun rise/sun set, moon presence and illumination.
 This is a very lite software.
@@ -14,8 +14,8 @@ Raspbian Lite, no desktop.
 Being really lite, I guess no problems if you run it on Pi3 and 2GB
 
 Optionally, you can also get (if, so contact me !):
-- script to control relays for dew heater and cooling fan
-- script to read temperature and humidity 
+- script to control relays for dew heater and cooling fan (in case you have relays installed)
+- script to read temperature and humidity (in case you have the sensor installed)
 
 ## INSTALLATION
 
